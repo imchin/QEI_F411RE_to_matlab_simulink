@@ -45,7 +45,7 @@ TIM_HandleTypeDef htim5;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-uint8_t data[4]={73,2,3,109};
+uint8_t data[4]={73,109,2,3};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -326,8 +326,8 @@ uint16_t value=0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if (htim == &htim5){
 		value=htim2.Instance->CNT;
-		data[1]=value&0b11110000;
-		data[2]=value&0b1111;
+		data[3]=(value&0b1111111100000000) >>8;
+		data[2]=value&0b11111111;
 		HAL_UART_Transmit_IT(&huart2, data, 4);
 	}
 }
