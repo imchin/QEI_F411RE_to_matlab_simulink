@@ -53,3 +53,11 @@ Block Serial Receive
 - Set data type Uint16
 - Set header [73 109 64 99]
 - Set terminator [126]
+
+
+## วิธีนำไปใช้อย่างง่าย
+- 1.Clone
+- 2.คำนวณและตั้งค่า period ตาม spec encoder ใน ioc
+- 3.upload code to F411RE
+- 4.Set port com ใน simulink ทั้ง 2 block
+- 5.เลือกความถี่ในการอ่านที่ต้องการแต่ใน code ตัวอย่าง F411RE ส่งด้วยความถี่ 100 Hz
