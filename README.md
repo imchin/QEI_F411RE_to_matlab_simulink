@@ -57,7 +57,8 @@ Block Serial Receive
 
 ## วิธีนำไปใช้อย่างง่าย
 - 1.Clone
-- 2.คำนวณและตั้งค่า period ตาม spec encoder ใน ioc
-- 3.upload code to F411RE
-- 4.Set port com ใน simulink ทั้ง 2 block
-- 5.เลือกความถี่ในการอ่านที่ต้องการแต่ใน code ตัวอย่าง F411RE ส่งด้วยความถี่ 100 Hz
+- 2.คำนวณและตั้งค่า period ใน Timer2 ตาม spec encoder ใน ioc
+- 3.ต่อสายencoderโดย A เข้า PA0 B เข้า PA1
+- 4.upload code to F411RE
+- 5.Set port com ใน simulink ทั้ง 2 block
+- 6.เลือกความถี่ในการอ่านใน Simulink ที่ต้องการแต่ใน code ตัวอย่าง F411RE ส่งด้วยความถี่ 100 Hz
