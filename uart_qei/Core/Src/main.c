@@ -45,7 +45,7 @@ TIM_HandleTypeDef htim5;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-uint8_t data[4]={73,109,2,3};
+uint8_t data[7]={73,109,64,99,0,0,126};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -96,7 +96,7 @@ int main(void)
   MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Encoder_Start(&htim2,TIM_CHANNEL_ALL);
-  HAL_UART_Transmit_IT(&huart2, data, 4);
+  HAL_UART_Transmit_IT(&huart2, data, 7);
   HAL_TIM_Base_Start_IT(&htim5);
   /* USER CODE END 2 */
 
@@ -326,9 +326,9 @@ uint16_t value=0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if (htim == &htim5){
 		value=htim2.Instance->CNT;
-		data[3]=(value&0b1111111100000000) >>8;
-		data[2]=value&0b11111111;
-		HAL_UART_Transmit_IT(&huart2, data, 4);
+		data[5]=(value&0b1111111100000000) >>8;
+		data[4]=value&0b11111111;
+		HAL_UART_Transmit_IT(&huart2, data, 7);
 	}
 }
 /* USER CODE END 4 */
